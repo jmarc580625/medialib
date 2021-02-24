@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # usage & help utilities
 [[ -z ${helpLib} ]] || \
-  (echo 'warning helpLib.sh sourced multiple times, protect import with [[ -z ${helpLib+x} ]]' >&2)
+  (echo 'warning helpLib sourced multiple times, protect import with [[ -z ${helpLib+x} ]]' >&2)
 readonly helpLib=1
 
 #-------------------------------------------------------------------------------

@@ -1,14 +1,14 @@
 #-------------------------------------------------------------------------------
 # trace & debug utilities
 [[ -z ${traceLib} ]] || \
-  (echo 'warning traceLib.sh sourced multiple times, protect import with [[ -z ${traceLib+x} ]]' >&2)
+  (echo 'warning traceLib sourced multiple times, protect import with [[ -z ${traceLib+x} ]]' >&2)
 readonly traceLib=1
 
 #-------------------------------------------------------------------------------
 # import
 declare _TRACELIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${highlightLib+x} ]] && source ${_TRACELIB_LIB_PATH}/highlightLib.sh
-[[ -z ${trapLib+x} ]] && source ${_TRACELIB_LIB_PATH}/trapLib.sh
+[[ -z ${highlightLib+x} ]] && source ${_TRACELIB_LIB_PATH}/highlightLib
+[[ -z ${trapLib+x} ]] && source ${_TRACELIB_LIB_PATH}/trapLib
 unset  _TRACELIB_LIB_PATH
 
 #-- -----------------------------------------------------------------------------

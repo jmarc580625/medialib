@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # misc utilities
 [[ -z ${utilLib} ]] || \
-  (echo 'warning utilLib.sh sourced multiple times, protect import with [[ -z ${utilLib+x} ]]' >&2)
+  (echo 'warning utilLib sourced multiple times, protect import with [[ -z ${utilLib+x} ]]' >&2)
 readonly utilLib=1
 
 #-------------------------------------------------------------------------------

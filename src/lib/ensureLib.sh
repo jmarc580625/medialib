@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # control enforcement utilities
 [[ -z ${ensureLib} ]] || \
-  echo 'warning ensureLib.sh sourced multiple times, protect import with [[ -z ${ensureLib+x} ]]' >&2
+  echo 'warning ensureLib sourced multiple times, protect import with [[ -z ${ensureLib+x} ]]' >&2
 readonly ensureLib=1
 
 #-------------------------------------------------------------------------------

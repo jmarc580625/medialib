@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # trap control utilities
 [[ -z ${trapLib} ]] || \
-  echo 'warning trapLib.sh sourced multiple times, protect import with [[ -z ${trapLib+x} ]]' >&2
+  echo 'warning trapLib sourced multiple times, protect import with [[ -z ${trapLib+x} ]]' >&2
 readonly trapLib=1
 
 #-------------------------------------------------------------------------------

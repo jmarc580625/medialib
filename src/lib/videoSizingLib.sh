@@ -1,15 +1,15 @@
 #-------------------------------------------------------------------------------
 # video sizing utilities
 [[ -z ${videoSizingLib} ]] || \
-  echo 'warning videoSizingLib.sh imported multiple times, protect import with [[ -z ${videoSizingLib+x} ]]' >&2
+  echo 'warning videoSizingLib imported multiple times, protect import with [[ -z ${videoSizingLib+x} ]]' >&2
 readonly videoSizingLib=1
 
 #-------------------------------------------------------------------------------
 # import
 declare _VIDEOSIZINGLIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${traceLib+x} ]]      && source ${_VIDEOSIZINGLIB_LIB_PATH}/traceLib.sh
-[[ -z ${controlerLib+x} ]]  && source ${_VIDEOSIZINGLIB_LIB_PATH}/controlerLib.sh
-[[ -z ${exiftoolLib+x} ]]   && source ${_VIDEOSIZINGLIB_LIB_PATH}/exiftoolLib.sh
+[[ -z ${traceLib+x} ]]      && source ${_VIDEOSIZINGLIB_LIB_PATH}/traceLib
+[[ -z ${controlerLib+x} ]]  && source ${_VIDEOSIZINGLIB_LIB_PATH}/controlerLib
+[[ -z ${exiftoolLib+x} ]]   && source ${_VIDEOSIZINGLIB_LIB_PATH}/exiftoolLib
 unset _VIDEOSIZINGLIB_LIB_PATH
 
 [[ "${videoSizingLib_WithTrace}" != "true" ]] && disableTrace # disabling traceLib functions

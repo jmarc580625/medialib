@@ -1,13 +1,13 @@
 #-------------------------------------------------------------------------------
 # timer control utilities
 [[ -z ${timerLib} ]] || \
-  (echo 'warning timerLib.sh sourced multiple times, protect import with [[ -z ${timerLib+x} ]]' >&2)
+  (echo 'warning timerLib sourced multiple times, protect import with [[ -z ${timerLib+x} ]]' >&2)
 readonly timerLib=1
 
 #-------------------------------------------------------------------------------
 # import
 declare _TIMERLIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${traceLib+x} ]] && source ${_TIMERLIB_LIB_PATH}/traceLib.sh
+[[ -z ${traceLib+x} ]] && source ${_TIMERLIB_LIB_PATH}/traceLib
 unset _TIMERLIB_LIB_PATH
 
 [[ "${timerLib_WithTrace}" != "true" ]]   && disableTrace # disabling traceLib functions

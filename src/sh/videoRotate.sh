@@ -6,7 +6,7 @@
 # get script location
 EXEC_HOME=${0%/*}
 LIB_DIR=$(realpath ${EXEC_HOME}/../lib)
-source ${LIB_DIR}/coreLib.sh
+source ${LIB_DIR}/coreLib
 #-------------------------------------------------------------------------------
 # usage & help
 #-------------------------------------------------------------------------------
@@ -29,9 +29,9 @@ TO BE IMPLEMENTED
 #-------------------------------------------------------------------------------
 # import section
 #-------------------------------------------------------------------------------
-[[ -z ${renameFileLib+x} ]] && source ${LIB_DIR}/renameFileLib.sh
-[[ -z ${ffmpegLib+x} ]]     && source ${LIB_DIR}/ffmpegLib.sh
-[[ -z ${timerLib+x} ]]      && source ${LIB_DIR}/timerLib.sh
+[[ -z ${renameFileLib+x} ]] && source ${LIB_DIR}/renameFileLib
+[[ -z ${ffmpegLib+x} ]]     && source ${LIB_DIR}/ffmpegLib
+[[ -z ${timerLib+x} ]]      && source ${LIB_DIR}/timerLib
 
 #-------------------------------------------------------------------------------
 # functions

@@ -1,18 +1,18 @@
 #-------------------------------------------------------------------------------
 # test utilities
 [[ -z ${testingLib} ]] || \
-  (echo 'warning testingLib.sh imported multiple times, protect import with [[ -z ${testingLib+x} ]]' >&2)
+  (echo 'warning testingLib imported multiple times, protect import with [[ -z ${testingLib+x} ]]' >&2)
 readonly testingLib=1
 
 #-------------------------------------------------------------------------------
 # import
 declare _TESTINGLIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${trapLib+x} ]]   && source ${_TESTINGLIB_LIB_PATH}/trapLib.sh
-[[ -z ${traceLib+x} ]]  && source ${_TESTINGLIB_LIB_PATH}/traceLib.sh
-[[ -z ${ensureLib+x} ]] && source ${_TESTINGLIB_LIB_PATH}/ensureLib.sh
-[[ -z ${controlerLib+x} ]] && source ${_TESTINGLIB_LIB_PATH}/controlerLib.sh
-[[ -z ${highlightLib+x} ]] && source ${_TESTINGLIB_LIB_PATH}/highlightLib.sh
-[[ -z ${timerLib+x} ]]     && source ${_TESTINGLIB_LIB_PATH}/timerLib.sh
+[[ -z ${trapLib+x} ]]   && source ${_TESTINGLIB_LIB_PATH}/trapLib
+[[ -z ${traceLib+x} ]]  && source ${_TESTINGLIB_LIB_PATH}/traceLib
+[[ -z ${ensureLib+x} ]] && source ${_TESTINGLIB_LIB_PATH}/ensureLib
+[[ -z ${controlerLib+x} ]] && source ${_TESTINGLIB_LIB_PATH}/controlerLib
+[[ -z ${highlightLib+x} ]] && source ${_TESTINGLIB_LIB_PATH}/highlightLib
+[[ -z ${timerLib+x} ]]     && source ${_TESTINGLIB_LIB_PATH}/timerLib
 unset _TESTINGLIB_LIB_PATH
 
 #-------------------------------------------------------------------------------

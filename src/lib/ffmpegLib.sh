@@ -1,13 +1,13 @@
 #-------------------------------------------------------------------------------
 # ffmpeg utilities
 [[ -z ${ffmpegLib} ]] || \
-(echo 'warning ffmpegLib.sh imported multiple times, protect import with [[ -z ${ffmpegLib+x} ]]' >&2)
+(echo 'warning ffmpegLib imported multiple times, protect import with [[ -z ${ffmpegLib+x} ]]' >&2)
 readonly ffmpegLib=1
 
 #-------------------------------------------------------------------------------
 # get lib location
 declare _FFMPEGLIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${traceLib+x} ]] && source ${_FFMPEGLIB_LIB_PATH}/traceLib.sh
+[[ -z ${traceLib+x} ]] && source ${_FFMPEGLIB_LIB_PATH}/traceLib
 unset _FFMPEGLIB_LIB_PATH
 
 [[ "${ffmpegLib_WithTrace}" != "true" ]]   && disableTrace # disabling traceLib functions

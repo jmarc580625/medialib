@@ -1,13 +1,13 @@
 #-------------------------------------------------------------------------------
 #  file renaming utilities
 [[ -z ${renameFileLib} ]] || \
-  echo 'warning renameFileLib.sh sourced multiple times, protect import with [[ -z ${renameFileLib+x} ]]' >&2
+  echo 'warning renameFileLib sourced multiple times, protect import with [[ -z ${renameFileLib+x} ]]' >&2
 readonly renameFileLib=1
 
 #-------------------------------------------------------------------------------
 # import
 declare _RENAMEFILELIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${traceLib+x} ]] && source ${_RENAMEFILELIB_LIB_PATH}/traceLib.sh
+[[ -z ${traceLib+x} ]] && source ${_RENAMEFILELIB_LIB_PATH}/traceLib
 unset _RENAMEFILELIB_LIB_PATH
 
 [[ "${renameFileLib_WithTrace}" != "true" ]]   && disableTrace # disabling traceLib functions

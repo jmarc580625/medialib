@@ -1,14 +1,14 @@
 #-------------------------------------------------------------------------------
 # log message utilities
 [[ -z ${logLib} ]] || \
-  (echo 'WARNING: logLib.sh multiple import , use [[ -z ${logLib+x} ]] && source ${EXEC_HOME}/lib/logLib.sh' >&2)
+  (echo 'WARNING: logLib multiple import , use [[ -z ${logLib+x} ]] && source ${EXEC_HOME}/lib/logLib' >&2)
 readonly logLib=1
 
 #-------------------------------------------------------------------------------
 # import
 declare _LOGLIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${trapLib+x} ]] && source ${_LOGLIB_LIB_PATH}/trapLib.sh
-[[ -z ${highlightLib+x} ]] && source ${_LOGLIB_LIB_PATH}/highlightLib.sh
+[[ -z ${trapLib+x} ]] && source ${_LOGLIB_LIB_PATH}/trapLib
+[[ -z ${highlightLib+x} ]] && source ${_LOGLIB_LIB_PATH}/highlightLib
 unset _LOGLIB_LIB_PATH
 
 #-------------------------------------------------------------------------------

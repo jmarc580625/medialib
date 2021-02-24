@@ -6,7 +6,7 @@
 # get script location
 EXEC_HOME=${0%/*}
 LIB_DIR=$(realpath ${EXEC_HOME}/../lib)
-source ${LIB_DIR}/coreLib.sh
+source ${LIB_DIR}/coreLib
 #-------------------------------------------------------------------------------
 # usage & help
 #-------------------------------------------------------------------------------
@@ -79,4 +79,4 @@ if (( $# > 0 )) ; then
   exit 1
 fi
 
-find . -type f ${maxDepthSearch} -exec ${EXEC_HOME}/mediaLocate.sh ${options} {} \;
+find . -type f ${maxDepthSearch} -exec ${EXEC_HOME}/mediaLocate ${options} {} \;

@@ -6,7 +6,7 @@
 # get script location
 EXEC_HOME=${0%/*}
 LIB_DIR=$(realpath ${EXEC_HOME}/../lib)
-source ${LIB_DIR}/coreLib.sh
+source ${LIB_DIR}/coreLib
 #-------------------------------------------------------------------------------
 # usage & help
 #-------------------------------------------------------------------------------
@@ -33,8 +33,8 @@ Rename video files according to the following pattern: <who>-<what>@<where>[<dur
 #  import section
 #-------------------------------------------------------------------------------
 exiftoolLib_WithTrace=true
-[[ -z ${exiftoolLib+x} ]] && source ${LIB_DIR}/exiftoolLib.sh
-[[ -z ${timerLib+x} ]] && source ${LIB_DIR}/timerLib.sh
+[[ -z ${exiftoolLib+x} ]] && source ${LIB_DIR}/exiftoolLib
+[[ -z ${timerLib+x} ]] && source ${LIB_DIR}/timerLib
 
 #-------------------------------------------------------------------------------
 # functions

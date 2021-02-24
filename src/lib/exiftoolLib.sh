@@ -1,13 +1,13 @@
 #-------------------------------------------------------------------------------
 # exiftool utilities
 [[ -z ${exiftoolLib} ]] || \
-  (echo 'warning exiftoolLib.sh imported multiple times, protect import with [[ -z ${exiftoolLib+x} ]]' >&2)
+  (echo 'warning exiftoolLib imported multiple times, protect import with [[ -z ${exiftoolLib+x} ]]' >&2)
 readonly exiftoolLib=1
 
 #-------------------------------------------------------------------------------
 # import
 declare _EXIFTOOLLIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${traceLib+x} ]] && source ${_EXIFTOOLLIB_LIB_PATH}/traceLib.sh
+[[ -z ${traceLib+x} ]] && source ${_EXIFTOOLLIB_LIB_PATH}/traceLib
 unset _EXIFTOOLLIB_LIB_PATH
 
 [[ "${exiftoolLib_WithTrace}" != "true" ]]   && disableTrace # disabling traceLib functions

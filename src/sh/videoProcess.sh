@@ -6,7 +6,7 @@
 # get script location
 EXEC_HOME=${0%/*}
 LIB_DIR=$(realpath ${EXEC_HOME}/../lib)
-source ${LIB_DIR}/coreLib.sh
+source ${LIB_DIR}/coreLib
 #-------------------------------------------------------------------------------
 # usage & help
 #-------------------------------------------------------------------------------
@@ -22,8 +22,8 @@ Process video filesaccording to naming patttern
 #-------------------------------------------------------------------------------
 # import section
 #-------------------------------------------------------------------------------
-[[ -z ${renameFileLib+x} ]] && source ${LIB_DIR}/renameFileLib.sh
-[[ -z ${timerLib+x} ]]      && source ${LIB_DIR}/timerLib.sh
+[[ -z ${renameFileLib+x} ]] && source ${LIB_DIR}/renameFileLib
+[[ -z ${timerLib+x} ]]      && source ${LIB_DIR}/timerLib
 
 #-------------------------------------------------------------------------------
 # Main
@@ -84,17 +84,17 @@ while (( END > 0 )) ; do
 
   if [[ ${fileName} =~ .*-R[0-9]+\..* ]] ; then
     a=${fileName##*R}; rotSpec=${a%.*}
-    ${EXEC_HOME}/videoRotate.sh -r ${rotSpec} ${fileName}
+    ${EXEC_HOME}/videoRotate -r ${rotSpec} ${fileName}
   elif  [[ ${fileName} =~ .*-S[0-9]+x[0-9]+\..* ]] ; then
     a=${fileName##*S}; sizeSpec=${a%.*}
-    ${EXEC_HOME}/videoResize.sh -fs ${sizeSpec} ${fileName}
+    ${EXEC_HOME}/videoResize -fs ${sizeSpec} ${fileName}
   elif  [[ ${fileName} =~ .*-S\..* ]] ; then
-    ${EXEC_HOME}/videoResize.sh -fo ${fileName}
+    ${EXEC_HOME}/videoResize -fo ${fileName}
   elif  [[ ${fileName} =~ .*-C[0-9]+-[0-9]+-[0-9]+-[0-9]+\..* ]] ; then
     a=${fileName##*C}; b=${a%.*} ; cropSpec=${b//-/:}
-    ${EXEC_HOME}/videoCrop.sh -fc ${cropSpec} ${fileName}
+    ${EXEC_HOME}/videoCrop -fc ${cropSpec} ${fileName}
   elif  [[ ${fileName} =~ .*-C\..* ]] ; then
-    ${EXEC_HOME}/videoCrop.sh -f ${fileName}
+    ${EXEC_HOME}/videoCrop -f ${fileName}
   else
     info "'${fileName}' : ignored"
   fi

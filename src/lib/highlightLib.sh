@@ -1,13 +1,13 @@
 #-------------------------------------------------------------------------------
 # text highlighting utilities
 [[ -z ${highlightLib} ]] || \
-  ('warning highlightLib.sh imported multiple times, protect import with [[ -z ${highlightLib+x} ]]' >&2)
+  ('warning highlightLib imported multiple times, protect import with [[ -z ${highlightLib+x} ]]' >&2)
 readonly highlightLib=1
 
 #-------------------------------------------------------------------------------
 # import
 declare _HIGHLIGHTLIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${ensureLib+x} ]] && source ${_HIGHLIGHTLIB_LIB_PATH}/ensureLib.sh
+[[ -z ${ensureLib+x} ]] && source ${_HIGHLIGHTLIB_LIB_PATH}/ensureLib
 unset _HIGHLIGHTLIB_LIB_PATH
 
 #-------------------------------------------------------------------------------

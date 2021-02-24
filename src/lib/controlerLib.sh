@@ -7,8 +7,8 @@ readonly controlerLib=1
 #-------------------------------------------------------------------------------
 # import
 declare _CONTROLERLIB_LIB_PATH=${BASH_SOURCE%/*}
-[[ -z ${traceLib+x} ]]   && source ${_CONTROLERLIB_LIB_PATH}/traceLib.sh
-[[ -z ${ensureLib+x} ]] && source ${_CONTROLERLIB_LIB_PATH}/ensureLib.sh
+[[ -z ${traceLib+x} ]]   && source ${_CONTROLERLIB_LIB_PATH}/traceLib
+[[ -z ${ensureLib+x} ]] && source ${_CONTROLERLIB_LIB_PATH}/ensureLib
 unset _CONTROLERLIB_LIB_PATH
 
 [[ "${controlerLib_WithTrace}" != "true" ]]   && disableTrace # disabling traceLib functions

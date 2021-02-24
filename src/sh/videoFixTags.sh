@@ -8,7 +8,7 @@
 # get script location
 EXEC_HOME=${0%/*}
 LIB_DIR=$(realpath ${EXEC_HOME}/../lib)
-source ${LIB_DIR}/coreLib.sh
+source ${LIB_DIR}/coreLib
 #-------------------------------------------------------------------------------
 # usage & help
 #-------------------------------------------------------------------------------
@@ -38,9 +38,9 @@ Update exif tags for media files
 #  import section
 #-------------------------------------------------------------------------------
 exiftoolLib_WithTrace=true
-[[ -z ${exiftoolLib+x} ]] && source ${LIB_DIR}/exiftoolLib.sh
-[[ -z ${timerLib+x} ]] && source ${LIB_DIR}/timerLib.sh
-[[ -z ${utilLib+x} ]] && source ${LIB_DIR}/utilLib.sh
+[[ -z ${exiftoolLib+x} ]] && source ${LIB_DIR}/exiftoolLib
+[[ -z ${timerLib+x} ]] && source ${LIB_DIR}/timerLib
+[[ -z ${utilLib+x} ]] && source ${LIB_DIR}/utilLib
 
 #-------------------------------------------------------------------------------
 # functions
