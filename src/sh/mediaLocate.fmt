@@ -1,0 +1,17 @@
+#------------------------------------------------------------------------------
+# File:         locate.fmt
+#
+# Description:  Generate csv file GPS geolocation and filename
+#
+# Usage:        exiftool -p locate.fmt FILE [...] > CSV_FILE
+# Example:      exiftool -r -n -p locate.fmt . > geolocatedFileList.csv
+#
+# Requires:     ExifTool version 10.49 or later
+#
+# Notes:     1) Input files must contain GPSLatitude and GPSLongitude.
+#            2) Add the -ee option to extract the full track from video files.
+#            3) The -fileOrder option may be used to control the order of the
+#               generated track points when processing multiple files.
+#------------------------------------------------------------------------------
+#[IF]$gpslatitude $gpslongitude
+#[BODY]$gpslatitude;$gpslongitude;$directory/$filename
