@@ -145,7 +145,7 @@ BEGIN {
     if (mediaType == "MOVIE"){
       makeThumbDir()
       infoText="video<br/>" ext
-      execCmd("ffmpeg -hide_banner -v warning -nostdin -i \"" mediaFile "\" -vf  thumbnail,scale=128:-1 -frames:v 1 " thumbnailMediaFile)
+      execCmd("ffmpeg -hide_banner -v quiet -nostdin -i \"" mediaFile "\" -vf  thumbnail,scale=w=128:h=-1 -frames:v 1 " thumbnailMediaFile)
     } else if (mediaType == "PICTURE") {
       makeThumbDir()
       infoText="image<br/>" ext
@@ -160,7 +160,7 @@ BEGIN {
       key = longitude latitude;
       media[key] = hash;
 
-      execCmd("curl \"https://nominatim.openstreetmap.org/reverse?format=html&lat=" latitude "&lon=" longitude "&zoom=18\" >" openStreetMapInfo)
+      execCmd("curl -s \"https://nominatim.openstreetmap.org/reverse?format=html&lat=" latitude "&lon=" longitude "&zoom=18\" >" openStreetMapInfo)
       print "   <div class=\"parent container\">"
       print "    <a href=\"" mediaFile "\" target=_blank>"
       print "     <div class=child><img src=\"" thumbnailMediaFile "\"/></div>"
@@ -188,16 +188,15 @@ END{
   print " </body>"
   print "</html>"
 
-  print "unsorted"
-  for (key in media) {
-    print key " : " media[key]
-  }
+# print "unsorted"
+#  for (key in media) {
+#    print key " : " media[key]
+#  }
 
-  n = asorti(media, sorted)
-
-  print "sorted"
-  for (i = 1; i <= n; i++) {
-    print sorted[i] " : " media[sorted[i]]
-  }
+#  n = asorti(media, sorted)
+#  print "sorted"
+#  for (i = 1; i <= n; i++) {
+#    print sorted[i] " : " media[sorted[i]]
+#  }
 
 }

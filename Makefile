@@ -75,7 +75,6 @@ RESOURCE_FILES :=  accessNone.txt accessReadOnly.txt accessReadWrite.txt accessW
 RESOURCE_DIRS := aDirectory
 TARGET_RESOURCE_FILES := $(patsubst %,$(RESOURCE_TEST_DIR)/%,$(RESOURCE_FILES))
 TARGET_RESOURCE_DIRS := $(patsubst %,$(RESOURCE_TEST_DIR)/%,$(RESOURCE_DIRS))
-create_res : $(TARGET_RESOURCE_FILES) $(TARGET_RESOURCE_DIRS)
 $(RESOURCE_TEST_DIR)/aDirectory:
 	mkdir -p $@
 $(RESOURCE_TEST_DIR)/accessNone.txt:
@@ -90,8 +89,6 @@ $(RESOURCE_TEST_DIR)/accessReadWrite.txt:
 $(RESOURCE_TEST_DIR)/accessWriteOnly.txt:
 	touch $@
 	chmod -r+w-x $@
-clean_res : $(TARGET_RESOURCE_FILES) $(TARGET_RESOURCE_DIRS)
-	rm -rf $^
 
 #-------------------------------------------------------------------------------
 # rules for test scripts
@@ -123,17 +120,22 @@ $(BUILD_BIN_DIR) $(BUILD_LIB_DIR) $(RESULT_TEST_DIR) $(INSTALL_LIB_DIR) $(INSTAL
 #-------------------------------------------------------------------------------
 # the make file rules
 #-------------------------------------------------------------------------------
-.PHONY: build_bin build_lib all test clean install uninstall
-.DEFAULT_GOAL := all
+.PHONY: build_bin build_lib build create_res test clean_dir clean_res clean install_lib install_bin install uninstall
+.DEFAULT_GOAL := build
 build_bin : $(BUILD_BIN_DIR) $(TARGET_BUILD_BIN_FILES)
 build_lib : $(BUILD_LIB_DIR) $(TARGET_BUILD_LIB_FILES)
-all : build_lib build_bin
-test : all create_res $(RESULT_TEST_DIR) $(TEST_RESULT_FILES) 
+build : build_lib build_bin
+create_res : $(TARGET_RESOURCE_FILES) $(TARGET_RESOURCE_DIRS)
+test : build create_res $(RESULT_TEST_DIR) $(TEST_RESULT_FILES) 
 clean_dir : $(BUILD_BIN_DIR) $(BUILD_LIB_DIR) $(RESULT_TEST_DIR)
+	rm -rf $^
+clean_res : $(TARGET_RESOURCE_FILES) $(TARGET_RESOURCE_DIRS)
 	rm -rf $^
 clean : clean_dir clean_res
 	rm -f depends
-install : all $(INSTALL_LIB_DIR) $(TARGET_INSTALL_LIB_FILES) $(INSTALL_BIN_DIR) $(TARGET_INSTALL_BIN_FILES)
+install_lib : $(INSTALL_LIB_DIR) $(TARGET_INSTALL_LIB_FILES)
+install_bin : $(INSTALL_BIN_DIR) $(TARGET_INSTALL_BIN_FILES)
+install : build install_lib install_bin 
 uninstall :
 	rm -f $(TARGET_INSTALL_BIN_FILES) $(TARGET_INSTALL_LIB_FILES)
 depends :
