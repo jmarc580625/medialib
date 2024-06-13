@@ -24,6 +24,7 @@ getGeoTag +file
 #-------------------------------------------------------------------------------
 testResourceDirectory=${@:-${RESOURCE_TEST_DIR}}
 inListMode || checkDir "${testResourceDirectory}"
+
 readonly controlingIsInteger=(isInteger '')
 
 #-------------------------------------------------------------------------------

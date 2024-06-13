@@ -159,14 +159,15 @@ BEGIN {
 
       key = longitude latitude;
       media[key] = hash;
+      url_openstreetmap = "https://www.openstreetmap.org/#map=<zoom>/<latitude>/<longitude>"
 
-      execCmd("curl -s \"https://nominatim.openstreetmap.org/reverse?format=html&lat=" latitude "&lon=" longitude "&zoom=18\" >" openStreetMapInfo)
-      print "   <div class=\"parent container\">"
+      #execCmd("curl -s \"https://nominatim.openstreetmap.org/ui/reverse?format=html&lat=" latitude "&lon=" longitude "&zoom=18\" >" openStreetMapInfo)
+      print "   <div class=\"parent container\" id=" hash ">"
       print "    <a href=\"" mediaFile "\" target=_blank>"
       print "     <div class=child><img src=\"" thumbnailMediaFile "\"/></div>"
       print "    </a>"
       print "    <div class=\"locations\">"
-      print "     <a href=\"" openStreetMapInfo "\" target=_blank>"
+      print "     <a href=\" https://nominatim.openstreetmap.org/ui/reverse.html?lat=" latitude "&lon=" longitude "&zoom=18\" target=_blank>"
       #    if (exifdump == "true"){
       #      execCmd("exiftool -h " mediaFile " > " exifInfo)
       #      print "     <div class=\"oms\">" infoText "</div>"

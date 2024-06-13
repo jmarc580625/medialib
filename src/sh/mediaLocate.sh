@@ -84,8 +84,8 @@ exiftoolScript="${LIB_DIR}/mediaLocateFindGPS" ; traceVar exiftoolScript
 
 if [[ "${webMode}" == true ]] ; then
   thumbDir=".${EXEC_NAME}"                  ; traceVar thumbDir
-  processing=" | tr -d '\015' | awk -f ${awkScript} ${awkVerboseMode} -v thumbDir=${thumbDir} -F\;"
-  traceVar htmlGeneration
+  processing=" | tr -d '\015' | awk -f ${awkScript} ${awkVerboseMode} -v thumbDir=${thumbDir} -F \;"
+  traceVar processing
 fi
 
 (

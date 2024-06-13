@@ -122,7 +122,7 @@ itemStart getNewFileName "_WithExitingFile" && __test__() {
   local controling=(equal fooBar-2.txt)
   controlValue "${EXPECT_PASS}" controling fileName2
 
-  rm -f fooBar-?.txt
+  rm -f fooBar*.txt
 
 } && __test__ ; itemEnd
 

@@ -1,5 +1,8 @@
-
-res/accessReadOnly.txt
-res/accessNone.txt
-res/accessReadWrite.txt
-res/accessWriteOnly.txt
+depends
+lib
+bin
+src/test/result
+res/test/accessWriteOnly.txt
+res/test/accessNone.txt
+res/test/accessReadOnly.txt
+res/test/accessReadWrite.txt
