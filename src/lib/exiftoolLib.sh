@@ -17,7 +17,7 @@ unset _EXIFTOOLLIB_LIB_PATH
 function _getExiftoolCommand  {
   local command=$(which exiftool 2>/dev/null)
   traceVar command
-  [[ -z ${command+x} ]] && fatal "install exiftool"
+  [[ -z "${command}" ]] && fatal "install exiftool"
   echo "${command} "
 }
 function _durationInSeconds   { echo $(( ($1 * 3600 ) + ($2 * 60) + $3 )) ; }
