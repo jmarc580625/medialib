@@ -96,18 +96,18 @@ BEGIN {
     } else
     trace("mediaHash="mediaHash)
 
-    thumbnailMediaFile = mediaHashPath mediaHash ".jpg"
-    openStreetMapInfo =  mediaHashPath mediaHash ".html"
-    exifInfo =           mediaHashPath mediaHash "-exif.html"
+    mediaThumbnailFile  = mediaHashPath mediaHash ".jpg"
+    mediaDocument       = mediaHashPath mediaHash ".html"
+    mediaExifInfo       = mediaHashPath mediaHash "-exif.html"
 
     if (mediaType == "MOVIE"){
       makeThumbDir()
       infoText="video<br/>" ext
-      execCmd("ffmpeg -hide_banner -v quiet -nostdin -i \"" mediaFile "\" -vf  thumbnail,scale=w=128:h=-1 -frames:v 1 " thumbnailMediaFile)
+      execCmd("ffmpeg -hide_banner -v quiet -nostdin -i \"" mediaFile "\" -vf  thumbnail,scale=w=128:h=-1 -frames:v 1 " mediaThumbnailFile)
     } else if (mediaType == "PICTURE") {
       makeThumbDir()
       infoText="image<br/>" ext
-      execCmd("convert -quiet -resize 128x \"" mediaFile "\" " thumbnailMediaFile)
+      execCmd("convert -quiet -resize 128x \"" mediaFile "\" " mediaThumbnailFile)
     } else {
       mediaToShow = 0
     }

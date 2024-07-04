@@ -97,25 +97,24 @@ fi
 
 memoryPath=${1}
 if [[ ! -d "${memoryPath}" ]] ; then
-    error "memory directory '${memoryPath}' does not exist or has restricted access rights"
+    error "memory_directory '${memoryPath}' does not exist or has restricted access rights"
     exit 1
 fi
 
-screenCount=0
-newCount=0
-ignoreCount=0
-processCount=0
-purgeCount=0
+declare screenCount=0
+declare newCount=0
+declare ignoreCount=0
+declare processCount=0
+declare purgeCount=0
 
 if (( purgeMode )) ; then
-  set -x
   find "${memoryPath}" -type f -name "*${IGNORE}" -o -iname "*${DONE}" -o -iname "*${ONGOING}" |\
-    (( screenCount++ ))
     while IFS= read fileToProcess ; do
+      (( screenCount++ ))
       [[ ! -f "$(head -n 1 "${fileToProcess}" 2>/dev/null)" ]] && rm -f ${fileToProcess} && (( purgeCount++ ))
-      (( verboseOption > 0 )) && printf "${screenCount} - ${purgeCount}\r" 1>&2
+      (( verboseOption > 1 )) && printf "${screenCount} - ${purgeCount}\r" 1>&2
     done
-  (( verboseOption > 0 )) && info "screen=${screenCount}; purge=${newCount}"
+  (( verboseOption > 0 )) && info "screen:${screenCount}; purge:${purgeCount}"
   exit
 fi
 
@@ -127,6 +126,7 @@ readonly  DEFAULT_ACTION=echo
 
 action=${@:2}
 action=${action:-${DEFAULT_ACTION}}
+actionReported=""
 
 while IFS= read -r fileToProcess ; do 
     (( screenCount++ ))
@@ -152,21 +152,21 @@ while IFS= read -r fileToProcess ; do
         fileStatus="${fileHash}${ONGOING}"
     elif (( done )) ; then
         fileIsNewer=0 ; [[ "${fileToProcess}" -nt "${fileHash}${DONE}" ]] && fileIsNewer=1
-        if (( proceedAction = forceOption || fileIsNewer )) ; then
-            fileStatus="${fileHash}${DONE}"
-        fi
+        (( proceedAction = forceOption || fileIsNewer )) && fileStatus="${fileHash}${DONE}"
     fi
 
     if (( proceedAction )) ; then
         ${action} "${fileToProcess}" "${fileStatus}"
         ((processCount++))
-        (( verboseOption == 1 )) && printf "${processCount}\r" 1>&2
-        (( verboseOption > 1 )) && info process "${fileToProcess}" with status "${fileStatus}"
+        (( verboseOption > 2 )) && actionReported="processed with status "${fileStatus}""
     else
         ((ignoreCount++))
+        (( verboseOption > 2 )) && actionReported="ignore"
     fi
-
     # for status ignore : do nothing 
+
+    (( verboseOption == 2 )) && printf "screen=${screenCount}\tprocess=${processCount}\tignore=${ignoreCount}\r" 1>&2
+    (( verboseOption > 2 )) && info "${fileToProcess} ${actionReported}"
 
 done;
 
